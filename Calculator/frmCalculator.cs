@@ -14,15 +14,15 @@ using Button = System.Windows.Forms.Button;
 
 namespace Calculator
 {
-    public partial class Calculator : Form
+    public partial class frmCalculator : Form
     {
         string operation="";
         double num1,num2,result;
-        public Calculator()
+        public frmCalculator()
         {
             InitializeComponent();
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void frmCalculator_Load(object sender, EventArgs e)
         {
 
         }
