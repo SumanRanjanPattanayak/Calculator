@@ -20,13 +20,20 @@ namespace Calculator
         }
         private void btnNumbers(object sender, EventArgs e)
         {
-            Button b = (Button)sender;
+            Button b = sender as Button;
             if (b.Text == ".")
             {
                 if (!isDecimal)
                 {
                     isDecimal = true;
-                    txtOutput.Text += b.Text;
+                    if (txtOutput.Text == "0")
+                    {
+                        txtOutput.Text += b.Text;
+                    }
+                    else
+                    {
+                        txtOutput.Text = txtOutput.Text + b.Text;
+                    }
                 }
             }
             else
@@ -37,13 +44,13 @@ namespace Calculator
                 }
                 else
                 {
-                    txtOutput.Text += b.Text;
+                    txtOutput.Text = txtOutput.Text + b.Text;
                 }
             }
         }
         private void btnOperators(object sender, EventArgs e)
         {
-            Button b = (Button)sender;
+            Button button = (Button)sender;
             Operand = double.Parse(txtOutput.Text);
             if (Operator == "")
             {
@@ -67,9 +74,9 @@ namespace Calculator
                         break;
                 }
             }
-            Operator = b.Text;
+            Operator = button.Text;
             isDecimal = false;
-            lblDisplay.Text = $"{result} {Operator}";
+            lblDisplay.Text = result + " " + Operator;
             txtOutput.Text = "0";
         }
         private void btnEqual(object sender, EventArgs e)
@@ -108,6 +115,10 @@ namespace Calculator
         {
             if (txtOutput.Text.Length > 0)
             {
+                if (txtOutput.Text.EndsWith("."))
+                {
+                    isDecimal = false;
+                }
                 txtOutput.Text = txtOutput.Text.Substring(0, txtOutput.Text.Length - 1);
                 if (txtOutput.Text.Length == 0)
                 {

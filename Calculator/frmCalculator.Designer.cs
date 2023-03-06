@@ -306,7 +306,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.frmCalculatorLoad);
-            this.Click += new System.EventHandler(this.btnNumbers);
             this.ResumeLayout(false);
             this.PerformLayout();
 
